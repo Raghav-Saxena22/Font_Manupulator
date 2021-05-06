@@ -2,6 +2,7 @@ noseX = 0;
 noseY = 0;
 right_wristX = 0;
 left_wristX = 0;
+distance = 0;
 function setup()
 {
     video = createCapture(VIDEO);
@@ -17,6 +18,8 @@ poseNet.on('pose', gotPoses);
 
 function draw()
 {
+    background("teal")
+    textSize(distance)
 text("Raghav", noseX, noseY)
 }
 
@@ -29,6 +32,8 @@ if(results.length > 0)
     noseY = results[0].pose.nose.y;
     right_wristX = results[0].pose.rightWrist.x;
     left_wristX = results[0].pose.leftWrist.x;
+    distance = left_wristX - right_wristX;
+    console.log(distance);
 }
 }
 
